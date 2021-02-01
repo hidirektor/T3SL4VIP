@@ -24,7 +24,7 @@ public class Commands implements CommandExecutor
       final PlayerUtil putil = new PlayerUtil();
       if (cmd.getName().equalsIgnoreCase("tvip")) {
          if (args.length == 0) {
-            if(sender.hasPermission("vip.genel")) {
+            if(sender.hasPermission("t3sl4vip.general")) {
                for ( String s : MessageUtil.INFO) {
                   sender.sendMessage(String.valueOf(s));
                }
@@ -35,7 +35,7 @@ public class Commands implements CommandExecutor
             return true;
          }
          if (args[0].equalsIgnoreCase("ver")) {
-            if (!sender.isOp()) {
+            if (!sender.isOp() || !sender.hasPermission("t3sl4vip.give")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
             }
@@ -77,7 +77,7 @@ public class Commands implements CommandExecutor
             return true;
          }
          else if (args[0].equalsIgnoreCase("ekle")) {
-            if (!sender.isOp()) {
+            if (!sender.isOp() || !sender.hasPermission("t3sl4vip.add")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
             }
@@ -111,7 +111,7 @@ public class Commands implements CommandExecutor
             return true;
          }
          else if (args[0].equalsIgnoreCase("dagit")) {
-            if (!sender.isOp()) {
+            if (!sender.isOp() || !sender.hasPermission("t3sl4vip.distribute")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
             }
@@ -142,7 +142,7 @@ public class Commands implements CommandExecutor
             return true;
          }
          else if (args[0].equalsIgnoreCase("sil")) {
-            if (!sender.isOp()) {
+            if (!sender.isOp() || !sender.hasPermission("t3sl4vip.remove")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
             }
@@ -170,18 +170,22 @@ public class Commands implements CommandExecutor
                return true;
             }
             final Player player2 = (Player)sender;
-            if (!putil.isVIP(player2) || !this.manager.getData().isConfigurationSection(player2.getName())) {
-               player2.sendMessage(MessageUtil.NOTVIP.replace("%player%", player2.getName()));
-               return true;
+            if(sender.hasPermission("t3sl4vip.check")) {
+               if (!putil.isVIP(player2) || !this.manager.getData().isConfigurationSection(player2.getName())) {
+                  player2.sendMessage(MessageUtil.NOTVIP.replace("%player%", player2.getName()));
+                  return true;
+               }
+               new GuiManager(player2);
+            } else {
+               sender.sendMessage(MessageUtil.NOPERM);
             }
-            new GuiManager(player2);
          }
          else {
             if (!args[0].equalsIgnoreCase("reload")) {
                sender.sendMessage(MessageUtil.ERRORUNDEFINED);
                return true;
             }
-            if (!sender.isOp()) {
+            if (!sender.isOp() || !sender.hasPermission("t3sl4vip.reload")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
             }
