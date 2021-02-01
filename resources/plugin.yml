@@ -1,0 +1,10 @@
+name: T3SL4VIP
+author: SYN_T3SL4
+main: me.t3sl4.vip.T3SL4VIP
+version: 01.02.2021
+description: Plugin that gives player access to vip for a certain time
+
+commands:
+  tvip:
+    usage: /<command>
+    description: the main command.
