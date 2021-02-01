@@ -34,7 +34,7 @@ public class Commands implements CommandExecutor
             }
             return true;
          }
-         if (args[0].equalsIgnoreCase("ver")) {
+         if (args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase("give")) {
             if (!sender.isOp() || !sender.hasPermission("t3sl4vip.give")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
@@ -76,7 +76,7 @@ public class Commands implements CommandExecutor
             player.sendMessage(MessageUtil.VIPGIVEN.replace("%sure%", String.valueOf(time)).replace("%rutbe%", type));
             return true;
          }
-         else if (args[0].equalsIgnoreCase("ekle")) {
+         else if (args[0].equalsIgnoreCase("ekle") || args[0].equalsIgnoreCase("add")) {
             if (!sender.isOp() || !sender.hasPermission("t3sl4vip.add")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
@@ -95,7 +95,7 @@ public class Commands implements CommandExecutor
                sender.sendMessage(MessageUtil.NOTVIP);
                return true;
             }
-            if (!args[3].equalsIgnoreCase("saat") && !args[3].equalsIgnoreCase("gün")) {
+            if (!args[3].equalsIgnoreCase("hour") && !args[3].equalsIgnoreCase("day")) {
                sender.sendMessage(MessageUtil.TIMETYPE);
                return true;
             }
@@ -110,7 +110,7 @@ public class Commands implements CommandExecutor
             putil.addTime(player, time2, args[3]);
             return true;
          }
-         else if (args[0].equalsIgnoreCase("dagit")) {
+         else if (args[0].equalsIgnoreCase("dagit") || args[0].equalsIgnoreCase("distribute")) {
             if (!sender.isOp() || !sender.hasPermission("t3sl4vip.distribute")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
@@ -141,7 +141,7 @@ public class Commands implements CommandExecutor
             }
             return true;
          }
-         else if (args[0].equalsIgnoreCase("sil")) {
+         else if (args[0].equalsIgnoreCase("sil") || args[0].equalsIgnoreCase("remove")) {
             if (!sender.isOp() || !sender.hasPermission("t3sl4vip.remove")) {
                sender.sendMessage(MessageUtil.NOPERM);
                return true;
@@ -164,7 +164,7 @@ public class Commands implements CommandExecutor
             sender.sendMessage(MessageUtil.REMOVED.replace("%player%", player.getName()));
             return true;
          }
-         else if (args[0].equalsIgnoreCase("sorgu")) {
+         else if (args[0].equalsIgnoreCase("sorgu") || args[0].equalsIgnoreCase("check")) {
             if (!(sender instanceof Player)) {
                sender.sendMessage(MessageUtil.CONSOLE);
                return true;

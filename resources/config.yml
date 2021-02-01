@@ -1,19 +1,19 @@
-Prefix: '&2&lS&c&lO &e» '
+Prefix: '&6&lT3SL4VIP &8» '
 GUI:
-  title: '&bVIP Sorgu'
+  title: '&bVIP Check'
   lore:
     - '&r    '
-    - '&e VIP Türü : &a%rank%'
-    - '&e Bitiş Tarihi : &a%bitis%'
-    - '&e Kalan Süre :  &a%kalan% Gün'
+    - '&e VIP Type : &a%rank%'
+    - '&e Ending Date : &a%bitis%'
+    - '&e Remaining Time :  &a%kalan% Days'
 Info:
-  - '&5            =&b_&5=&b_&5=&b_&5=&b_&2&lSon&c&lOsmanli&5=&b_&5=&b_&5=&b_&5=&b_'
-  - '&7/tvip sorgu &e»&aKalan VIP Süresini Gösterir'
-  - '&7/tvip ver &7<&5Oyuncu&7> <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aOyuncuya VIP Verir'
-  - '&7/tvip sil <&5Oyuncu&7> &e»&aOyuncunun VIPini Siler'
-  - '&7/tvip dagit <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aSunucudaki Herkese VIP Verir'
-  - '&7/tvip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
-  - '&7/tvip reload &e»&aEklentiyi Yeniler'
+  - '&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m[&6 &lT3SL4VIP &8&l&m]&f&l&m-&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m-'
+  - '&7/tvip check &e»&aDisplays the remaining VIP time.'
+  - '&7/tvip give &7<&5Player&7> <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to player.'
+  - "&7/tvip remove <&5Player&7> &e»&aDeletes the player's VIP."
+  - '&7/tvip distribute <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to everyone on the server.'
+  - '&7/tvip add <&5Player&7> <&5Time&7> <&5hour&7/&5day&7> &e»&aAdd time to VIP.'
+  - '&7/tvip reload &e»&aReload the plugin.'
 Settings:
   Ranks:
     - VIP
@@ -29,22 +29,22 @@ Settings:
       - /ss give %player% cow 2
       - /itemsp ver %player% demir 1
 Messages:
-  no-perm: '&4Dostum Bunun İçin Yetkin YOK !'
-  no-player: '&b%player% &cAdında Bir Oyuncu YOK !'
-  no-rank: '&b%rank% &cAdında Bir VIP Grubu YOK !'
-  error-undefined: '&4Bir Sorun Oluştu.'
-  not-vip: '&b%player% &cAdlı Oyuncu VIP Değil !'
-  console-error: '&4Bu Komutu Sadece Oyuncular Kullanabilir.'
-  already-vip: '&b%player% &cAdlı Oyuncu Zaten VIP !'
-  time-type: '&4Süre Tipi Olarak Sadece Saat ve Gün Yazabilirsin !'
-  vip-add: '&b%player% &eAdlı Oyuncu &d%sure% &eGünlüğüne &9%rutbe% &eOldu !'
-  vip-given: '&d%sure% &eGünlüğüne &9%rutbe% &eOldunuz !'
-  reload: '&aSureliVIP Eklentisi Başarıyla Yenilendi !'
-  removed: '&a %player% isimli oyuncunun VIPliği başarıyla silindi.'
-  vip-added-hour: '&eVIP Sürene &b%vip_ekle_saat% &eSaat Eklenmiştir !'
-  vip-added-day: '&eVIP Sürene &b%vip_ekle_gun% &eGün Eklenmiştir !'
+  no-perm: "&4You don't have permission to do that!"
+  no-player: '&cThere is no player named &b%player%&c!'
+  no-rank: '&cThere is no vip group named &b%rank%&c!'
+  error-undefined: '&4An unknown error has occurred. Please check the command you entered.'
+  not-vip: '&b%player% &cis not a VIP !'
+  console-error: '&4Only players can use this command.'
+  already-vip: '&b%player% &cis already VIP !'
+  time-type: '&4You can enter only &7"&ehour&7" &4and &7"&eday&7" &4as duration type !'
+  vip-add: '&eThe player named &b%player% &ebecame a &9%rutbe% for &d%sure% &edays.'
+  vip-given: '&eYou became &9%rutbe% &efor &d%sure% &e!'
+  reload: '&aT3SL4VIP succesfully reloaded !'
+  removed: '&eVIP membership of &a%player% &enamed player was successfully deleted.'
+  vip-added-hour: '&b%vip_ekle_saat% &ehours added to your VIP period  !'
+  vip-added-day: '&b%vip_ekle_gun% &edays added to your VIP period  !'
 Usages:
-  add: '&7/vip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
-  give: '&7/vip ver &7<&5Oyuncu&7> <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aOyuncuya VIP Verir'
-  distribute: '&7/vip dagit <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aSunucudaki Herkese VIP Verir'
-  remove: '&7/vip sil <&5Oyuncu&7> &e»&aOyuncunun VIPini Siler'
+  add: '&7/tvip add <&5Player&7> <&5Time&7> <&5hour&7/&5day&7> &e»&aAdd time to VIP.'
+  give: '&7/tvip give &7<&5Player&7> <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to player.'
+  distribute: '&7/tvip distribute <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to everyone on the server.'
+  remove: "&7/tvip remove <&5Player&7> &e»&aDeletes the player's VIP."

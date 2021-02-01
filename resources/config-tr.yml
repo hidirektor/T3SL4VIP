@@ -1,0 +1,50 @@
+Prefix: '&6&lT3SL4VIP &8» '
+GUI:
+  title: '&bVIP Sorgu'
+  lore:
+    - '&r    '
+    - '&e VIP Türü : &a%rank%'
+    - '&e Bitiş Tarihi : &a%bitis%'
+    - '&e Kalan Süre :  &a%kalan% Gün'
+Info:
+  - '&5            =&b_&5=&b_&5=&b_&5=&b_&2&lSon&c&lOsmanli&5=&b_&5=&b_&5=&b_&5=&b_'
+  - '&7/tvip sorgu &e»&aKalan VIP Süresini Gösterir'
+  - '&7/tvip ver &7<&5Oyuncu&7> <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aOyuncuya VIP Verir'
+  - '&7/tvip sil <&5Oyuncu&7> &e»&aOyuncunun VIPini Siler'
+  - '&7/tvip dagit <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aSunucudaki Herkese VIP Verir'
+  - '&7/tvip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
+  - '&7/tvip reload &e»&aEklentiyi Yeniler'
+Settings:
+  Ranks:
+    - VIP
+    - MegaVIP
+  GlobalCommands:
+    give: manuadd %player% %VIP_Turu%
+    take-back: manuadd %player% Default
+  Commands:
+    VIP:
+      - /ss give %player% cow 2
+      - /itemsp ver %player% demir 1
+    MegaVIP:
+      - /ss give %player% cow 2
+      - /itemsp ver %player% demir 1
+Messages:
+  no-perm: '&4Dostum Bunun İçin Yetkin YOK !'
+  no-player: '&b%player% &cAdında Bir Oyuncu YOK !'
+  no-rank: '&b%rank% &cAdında Bir VIP Grubu YOK !'
+  error-undefined: '&4Bir Sorun Oluştu.'
+  not-vip: '&b%player% &cAdlı Oyuncu VIP Değil !'
+  console-error: '&4Bu Komutu Sadece Oyuncular Kullanabilir.'
+  already-vip: '&b%player% &cAdlı Oyuncu Zaten VIP !'
+  time-type: '&4Süre Tipi Olarak Sadece hour ve day Yazabilirsin !'
+  vip-add: '&b%player% &eAdlı Oyuncu &d%sure% &eGünlüğüne &9%rutbe% &eOldu !'
+  vip-given: '&d%sure% &eGünlüğüne &9%rutbe% &eOldunuz !'
+  reload: '&aSureliVIP Eklentisi Başarıyla Yenilendi !'
+  removed: '&a %player% isimli oyuncunun VIPliği başarıyla silindi.'
+  vip-added-hour: '&eVIP Sürene &b%vip_ekle_saat% &eSaat Eklenmiştir !'
+  vip-added-day: '&eVIP Sürene &b%vip_ekle_gun% &eGün Eklenmiştir !'
+Usages:
+  add: '&7/vip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
+  give: '&7/vip ver &7<&5Oyuncu&7> <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aOyuncuya VIP Verir'
+  distribute: '&7/vip dagit <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aSunucudaki Herkese VIP Verir'
+  remove: '&7/vip sil <&5Oyuncu&7> &e»&aOyuncunun VIPini Siler'

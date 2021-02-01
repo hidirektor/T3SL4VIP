@@ -86,12 +86,12 @@ public class PlayerUtil {
       byte var9 = -1;
       switch(type.hashCode()) {
       case 106905:
-         if (type.equals("gün")) {
+         if (type.equals("day")) {
             var9 = 0;
          }
          break;
       case 3522305:
-         if (type.equals("saat")) {
+         if (type.equals("hour")) {
             var9 = 1;
          }
       }
