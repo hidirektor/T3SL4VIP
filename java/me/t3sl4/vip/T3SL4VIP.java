@@ -45,6 +45,7 @@ public class T3SL4VIP extends JavaPlugin {
       Bukkit.getConsoleSender().sendMessage("  ___) |   | |   | |\\  |   | |    ___) |  ___) | | |___  |__   _|");
       Bukkit.getConsoleSender().sendMessage(" |____/    |_|   |_| \\_|   |_|   |____/  |____/  |_____|    |_|  ");
       Bukkit.getConsoleSender().sendMessage("    ");
+	  Bukkit.getConsoleSender().sendMessage("T3SL4 Series: T3SL4VIP");
       manager.setup(this);
       MessageUtil.loadMessages();
       scheduleSyncRepeatingTask(this, new RemovingRunnable(), 20L, 400L);
