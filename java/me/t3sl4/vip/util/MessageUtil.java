@@ -11,7 +11,9 @@ public class MessageUtil {
    public static String PREFIX;
    public static String TITLE;
    public static List<String> ITEMLORE;
+   public static List<String> ITEMLORE2;
    public static List<String> INFO;
+   public static String DEFAULTRANK;
    public static List<String> RANKS;
    public static String NOPERM;
    public static String NOPLAYER;
@@ -32,12 +34,15 @@ public class MessageUtil {
    public static String USAGEGIVE;
    public static String USAGEDISTRIBUTE;
    public static String USAGEREMOVE;
+   public static String NOTBOUGHT;
 
    public static void loadMessages() {
       PREFIX = colorize(manager.getConfig().getString("Prefix"));
       TITLE = colorize(manager.getConfig().getString("GUI.title"));
       ITEMLORE = colorizeList(manager.getConfig().getStringList("GUI.lore"));
+      ITEMLORE2 = colorizeList(manager.getConfig().getStringList("GUI.lore2"));
       INFO = colorizeList(manager.getConfig().getStringList("Info"));
+      DEFAULTRANK = manager.getConfig().getString("Settings.DefaultRank");
       RANKS = manager.getConfig().getStringList("Settings.Ranks");
       NOPERM = PREFIX + colorize(manager.getConfig().getString("Messages.no-perm"));
       NOPLAYER = PREFIX + colorize(manager.getConfig().getString("Messages.no-player"));
@@ -58,6 +63,7 @@ public class MessageUtil {
       USAGEGIVE = PREFIX + colorize(manager.getConfig().getString("Usages.give"));
       USAGEDISTRIBUTE = PREFIX + colorize(manager.getConfig().getString("Usages.distribute"));
       USAGEREMOVE = PREFIX + colorize(manager.getConfig().getString("Usages.remove"));
+      NOTBOUGHT = colorize(manager.getConfig().getString("Messages.not-bought"));
    }
 
    public static String colorize(String str) {

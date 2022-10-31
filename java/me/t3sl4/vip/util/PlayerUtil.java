@@ -97,6 +97,13 @@ public class PlayerUtil {
    }
 
    public String getRank(Player p) {
+      if(GMHook.getGroupManager() == null) {
+         if(isVIP(p)) {
+            return this.manager.getData().getString(p.getName() + ".MevcutRank");
+         } else {
+            return this.manager.getConfig().getString("Settings.DefaultRank");
+         }
+      }
       return this.groupManager.getGroup(p);
    }
 

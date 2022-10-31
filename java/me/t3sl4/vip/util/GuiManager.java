@@ -26,11 +26,20 @@ public class GuiManager {
       meta.setOwner(p.getName());
       meta.setDisplayName(ChatColor.AQUA.toString() + p.getName());
       ArrayList<String> outLore = new ArrayList();
-      Iterator itemLoreIterator = MessageUtil.ITEMLORE.iterator();
+      Iterator itemLoreIterator;
+      if(putil.isVIP(p)) {
+         itemLoreIterator = MessageUtil.ITEMLORE.iterator();
+      } else {
+         itemLoreIterator = MessageUtil.ITEMLORE2.iterator();
+      }
 
       while(itemLoreIterator.hasNext()) {
          String s = (String)itemLoreIterator.next();
-         outLore.add(MessageUtil.colorize(s.replace("%kalan%", String.valueOf(this.putil.getRemainingTime(p))).replace("%bitis%", this.putil.getBitis(p)).replace("%rank%", this.putil.getRank(p))));
+         if(putil.isVIP(p)) {
+            outLore.add(MessageUtil.colorize(s.replace("%kalan%", String.valueOf(this.putil.getRemainingTime(p))).replace("%bitis%", this.putil.getBitis(p)).replace("%rank%", this.putil.getRank(p))));
+         } else {
+            outLore.add(MessageUtil.colorize(s.replace("%kalan%", MessageUtil.NOTBOUGHT).replace("%bitis%", MessageUtil.NOTBOUGHT).replace("%rank%", this.putil.getRank(p))));
+         }
       }
 
       meta.setLore(outLore);

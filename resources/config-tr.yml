@@ -6,6 +6,11 @@ GUI:
     - '&e VIP Türü : &a%rank%'
     - '&e Bitiş Tarihi : &a%bitis%'
     - '&e Kalan Süre :  &a%kalan% Gün'
+  lore2:
+    - '&r    '
+    - '&e VIP Türü : &a%rank%'
+    - '&e Bitiş Tarihi : &a%bitis%'
+    - '&e Kalan Süre :  &a%kalan%'
 Info:
   - '&5            =&b_&5=&b_&5=&b_&5=&b_&2&lSon&c&lOsmanli&5=&b_&5=&b_&5=&b_&5=&b_'
   - '&7/tvip sorgu &e»&aKalan VIP Süresini Gösterir'
@@ -15,6 +20,7 @@ Info:
   - '&7/tvip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
   - '&7/tvip reload &e»&aEklentiyi Yeniler'
 Settings:
+  DefaultRank: 'Oyuncu'
   Ranks:
     - VIP
     - MegaVIP
@@ -44,6 +50,7 @@ Messages:
   removed: '&a %player% isimli oyuncunun VIPliği başarıyla silindi.'
   vip-added-hour: '&eVIP Sürene &b%vip_ekle_saat% &eSaat Eklenmiştir !'
   vip-added-day: '&eVIP Sürene &b%vip_ekle_gun% &eGün Eklenmiştir !'
+  not-bought: '&cVIP Satın Almadınız !'
 Usages:
   add: '&7/vip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
   give: '&7/vip ver &7<&5Oyuncu&7> <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aOyuncuya VIP Verir'

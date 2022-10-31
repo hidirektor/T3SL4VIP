@@ -171,10 +171,10 @@ public class Commands implements CommandExecutor
             }
             final Player player2 = (Player)sender;
             if(sender.hasPermission("t3sl4vip.check")) {
-               if (!putil.isVIP(player2) || !this.manager.getData().isConfigurationSection(player2.getName())) {
-                  player2.sendMessage(MessageUtil.NOTVIP.replace("%player%", player2.getName()));
-                  return true;
-               }
+               //if (!putil.isVIP(player2) || !this.manager.getData().isConfigurationSection(player2.getName())) {
+                  //player2.sendMessage(MessageUtil.NOTVIP.replace("%player%", player2.getName()));
+                  //return true;
+               //}
                new GuiManager(player2);
             } else {
                sender.sendMessage(MessageUtil.NOPERM);
