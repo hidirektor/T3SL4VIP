@@ -15,6 +15,7 @@ public class MessageUtil {
    public static List<String> RANKS;
    public static String NOPERM;
    public static String NOPLAYER;
+   public static String NOVIPPLAYER;
    public static String NORANK;
    public static String ERRORUNDEFINED;
    public static String NOTVIP;
@@ -40,6 +41,7 @@ public class MessageUtil {
       RANKS = manager.getConfig().getStringList("Settings.Ranks");
       NOPERM = PREFIX + colorize(manager.getConfig().getString("Messages.no-perm"));
       NOPLAYER = PREFIX + colorize(manager.getConfig().getString("Messages.no-player"));
+      NOVIPPLAYER = PREFIX + colorize(manager.getConfig().getString("Messages.no-vip-player"));
       NORANK = PREFIX + colorize(manager.getConfig().getString("Messages.no-rank"));
       ERRORUNDEFINED = PREFIX + colorize(manager.getConfig().getString("Messages.error-undefined"));
       NOTVIP = PREFIX + colorize(manager.getConfig().getString("Messages.not-vip"));

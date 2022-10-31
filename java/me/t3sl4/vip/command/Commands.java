@@ -88,7 +88,7 @@ public class Commands implements CommandExecutor
             final String name = args[1];
             final Player player = Bukkit.getServer().getPlayer(name);
             if (player == null) {
-               sender.sendMessage(MessageUtil.NOPLAYER.replace("%player%", name));
+               sender.sendMessage(MessageUtil.NOVIPPLAYER.replaceAll("%player%", name));
                return true;
             }
             if (!putil.isVIP(player)) {
@@ -102,11 +102,11 @@ public class Commands implements CommandExecutor
             int time2;
             try {
                time2 = Integer.parseInt(args[2]);
-            }
-            catch (Exception e2) {
+            } catch(Exception e) {
                sender.sendMessage(MessageUtil.ERRORUNDEFINED);
                return true;
             }
+
             putil.addTime(player, time2, args[3]);
             return true;
          }

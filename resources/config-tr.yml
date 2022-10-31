@@ -31,6 +31,7 @@ Settings:
 Messages:
   no-perm: '&4Dostum Bunun İçin Yetkin YOK !'
   no-player: '&b%player% &cAdında Bir Oyuncu YOK !'
+  no-vip-player: '&b%player% &cAdında VIP Bir Oyuncu YOK'
   no-rank: '&b%rank% &cAdında Bir VIP Grubu YOK !'
   error-undefined: '&4Bir Sorun Oluştu.'
   not-vip: '&b%player% &cAdlı Oyuncu VIP Değil !'

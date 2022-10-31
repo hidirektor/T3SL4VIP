@@ -31,6 +31,7 @@ Settings:
 Messages:
   no-perm: "&4You don't have permission to do that!"
   no-player: '&cThere is no player named &b%player%&c!'
+  no-vip-player: '&cThere is no vip player named &b%player%&c!'
   no-rank: '&cThere is no vip group named &b%rank%&c!'
   error-undefined: '&4An unknown error has occurred. Please check the command you entered.'
   not-vip: '&b%player% &cis not a VIP !'

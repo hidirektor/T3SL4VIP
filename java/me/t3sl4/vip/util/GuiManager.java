@@ -26,10 +26,10 @@ public class GuiManager {
       meta.setOwner(p.getName());
       meta.setDisplayName(ChatColor.AQUA.toString() + p.getName());
       ArrayList<String> outLore = new ArrayList();
-      Iterator var5 = MessageUtil.ITEMLORE.iterator();
+      Iterator itemLoreIterator = MessageUtil.ITEMLORE.iterator();
 
-      while(var5.hasNext()) {
-         String s = (String)var5.next();
+      while(itemLoreIterator.hasNext()) {
+         String s = (String)itemLoreIterator.next();
          outLore.add(MessageUtil.colorize(s.replace("%kalan%", String.valueOf(this.putil.getRemainingTime(p))).replace("%bitis%", this.putil.getBitis(p)).replace("%rank%", this.putil.getRank(p))));
       }
 

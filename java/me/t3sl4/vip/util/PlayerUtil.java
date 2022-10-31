@@ -77,33 +77,19 @@ public class PlayerUtil {
       Date dateA;
       try {
          dateA = dateFormat.parse(bitis);
-      } catch (ParseException var10) {
-         var10.printStackTrace();
+      } catch (ParseException e) {
+         e.printStackTrace();
          return;
       }
 
       cal.setTime(dateA);
-      byte var9 = -1;
-      switch(type.hashCode()) {
-      case 106905:
-         if (type.equals("day")) {
-            var9 = 0;
-         }
-         break;
-      case 3522305:
-         if (type.equals("hour")) {
-            var9 = 1;
-         }
-      }
 
-      switch(var9) {
-      case 0:
+      if(type.equalsIgnoreCase("day")) {
          cal.add(5, time);
          player.sendMessage(MessageUtil.ADDEDDAY.replaceAll("%vip_ekle_gun%", String.valueOf(time)));
-         break;
-      case 1:
+      } else if(type.equalsIgnoreCase("hour")) {
          cal.add(11, time);
-         player.sendMessage(MessageUtil.ADDEDDAY.replaceAll("%vip_ekle_saat%", String.valueOf(time)));
+         player.sendMessage(MessageUtil.ADDEDHOUR.replaceAll("%vip_ekle_saat%", String.valueOf(time)));
       }
 
       this.manager.getData().set(player.getName() + ".Bitis", dateFormat.format(cal.getTime()));
