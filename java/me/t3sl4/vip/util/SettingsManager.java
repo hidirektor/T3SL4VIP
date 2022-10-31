@@ -23,35 +23,50 @@ public class SettingsManager {
    private Plugin p;
 
    private FileConfiguration config;
-   private File configfile;
+   private File configFile;
 
    private FileConfiguration data;
-   private File dfile;
+   private File dFile;
+
+   private FileConfiguration cache;
+   private File cacheFile;
 
    public void setup(Plugin p) {
-      configfile = new File(p.getDataFolder(), "config.yml");
+      configFile = new File(p.getDataFolder(), "config.yml");
 
       if (!p.getDataFolder().exists()) {
          p.getDataFolder().mkdir();
       }
 
-      if(!configfile.exists()){
+      if(!configFile.exists()){
          p.saveDefaultConfig();
       }
       config = p.getConfig();
 
 
-      dfile = new File(p.getDataFolder(), "data.yml");
+      dFile = new File(p.getDataFolder(), "data.yml");
 
-      if (!dfile.exists()) {
+      if (!dFile.exists()) {
          try {
-            dfile.createNewFile();
+            dFile.createNewFile();
          }
          catch (IOException e) {
             Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
          }
       }
-      data = YamlConfiguration.loadConfiguration(dfile);
+      data = YamlConfiguration.loadConfiguration(dFile);
+
+      cacheFile = new File(p.getDataFolder(), "cache.yml");
+
+      if (!cacheFile.exists()) {
+         try {
+            cacheFile.createNewFile();
+         }
+         catch (IOException e) {
+            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create cache.yml!");
+         }
+      }
+      cache = YamlConfiguration.loadConfiguration(cacheFile);
    }
 
    public FileConfiguration getData() {
@@ -60,7 +75,7 @@ public class SettingsManager {
 
    public void saveData() {
       try {
-         data.save(dfile);
+         data.save(dFile);
       }
       catch (IOException e) {
          Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data.yml!");
@@ -68,7 +83,24 @@ public class SettingsManager {
    }
 
    public void reloadData() {
-      data = YamlConfiguration.loadConfiguration(dfile);
+      data = YamlConfiguration.loadConfiguration(dFile);
+   }
+
+   public FileConfiguration getCache() {
+      return cache;
+   }
+
+   public void saveCache() {
+      try {
+         cache.save(cacheFile);
+      }
+      catch (IOException e) {
+         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save cache.yml!");
+      }
+   }
+
+   public void reloadCache() {
+      cache = YamlConfiguration.loadConfiguration(cacheFile);
    }
 
    public FileConfiguration getConfig() {
@@ -77,7 +109,7 @@ public class SettingsManager {
 
    public void saveConfig() {
       try {
-         config.save(configfile);
+         config.save(configFile);
       }
       catch (IOException e) {
          Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save config.yml ve gui.yml!");
@@ -85,7 +117,7 @@ public class SettingsManager {
    }
 
    public void reloadConfig() {
-      config = YamlConfiguration.loadConfiguration(configfile);
+      config = YamlConfiguration.loadConfiguration(configFile);
    }
 
    public PluginDescriptionFile getDesc() {
