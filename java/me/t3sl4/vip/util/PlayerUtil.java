@@ -13,8 +13,15 @@ public class PlayerUtil {
    SettingsManager manager = SettingsManager.getInstance();
    GMHook groupManager = T3SL4VIP.getGroupManager();
 
-   public boolean isVIP(Player p) {
-      return this.manager.getData().isConfigurationSection(p.getName());
+   public boolean isVIP(Player p, String name) {
+      if(p != null) {
+         return this.manager.getData().isConfigurationSection(p.getName());
+      }
+      return this.manager.getData().isConfigurationSection(name) && this.manager.getCache().isConfigurationSection(name);
+   }
+
+   public boolean isCached(String name) {
+      return this.manager.getCache().isConfigurationSection(name);
    }
 
    public Integer getRemainingTime(Player p) {
@@ -62,6 +69,21 @@ public class PlayerUtil {
       Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
    }
 
+   public void setGroupNull(String pName, String type, int time) {
+      Date date = new Date();
+      DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+      Calendar cal = Calendar.getInstance();
+      cal.setTime(date);
+      cal.add(5, time);
+      String output_time = dateFormat.format(cal.getTime());
+      this.manager.getCache().createSection(pName + "");
+      this.manager.getCache().set(pName + ".MevcutRank", type);
+      this.manager.getCache().set(pName + ".Bitis", output_time);
+      this.manager.getCache().set(pName + ".DayCount", time);
+      this.manager.saveCache();
+
+   }
+
    public void deleteVIP(Player player) {
       String command = this.manager.getConfig().getString("Settings.GlobalCommands.take-back").replace("%player%", player.getName());
       Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
@@ -98,7 +120,7 @@ public class PlayerUtil {
 
    public String getRank(Player p) {
       if(GMHook.getGroupManager() == null) {
-         if(isVIP(p)) {
+         if(isVIP(p, p.getName())) {
             return this.manager.getData().getString(p.getName() + ".MevcutRank");
          } else {
             return this.manager.getConfig().getString("Settings.DefaultRank");

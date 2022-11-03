@@ -43,12 +43,6 @@ public class Commands implements CommandExecutor
                sender.sendMessage(MessageUtil.USAGEGIVE);
                return true;
             }
-            final String name = args[1];
-            final Player player = Bukkit.getServer().getPlayer(name);
-            if (player == null) {
-               sender.sendMessage(MessageUtil.NOPLAYER.replace("%player%", name));
-               return true;
-            }
             final String type = args[2];
             if (!MessageUtil.RANKS.contains(type)) {
                sender.sendMessage(MessageUtil.NORANK.replace("%rank%", type));
@@ -62,18 +56,30 @@ public class Commands implements CommandExecutor
                sender.sendMessage(MessageUtil.ERRORUNDEFINED);
                return true;
             }
-            if (putil.isVIP(player)) {
+            final String name = args[1];
+            final Player player = Bukkit.getServer().getPlayer(name);
+            if (putil.isVIP(player, name)) {
                sender.sendMessage(MessageUtil.ALREADYVIP.replace("%player%", player.getName()));
                return true;
             }
-            putil.setGroup(player, type, time);
-            final ArrayList<String> commands = (ArrayList<String>)this.manager.getConfig().getStringList("Settings.Commands." + type);
-            for (String command : commands) {
-               command = command.replace("/", "").replace("%p%", player.getName()).replace("%player%", player.getName());
-               Bukkit.getServer().dispatchCommand((CommandSender)Bukkit.getConsoleSender(), command);
+            if (player == null) {
+               if(putil.isCached(name)) {
+                  sender.sendMessage(MessageUtil.NOCACHED.replace("%player%", name));
+               } else {
+                  putil.setGroupNull(name, type, time);
+                  sender.sendMessage(MessageUtil.CACHE.replace("%player%", name));
+               }
+               return true;
+            } else {
+               putil.setGroup(player, type, time);
+               final ArrayList<String> commands = (ArrayList<String>)this.manager.getConfig().getStringList("Settings.Commands." + type);
+               for (String command : commands) {
+                  command = command.replace("/", "").replace("%p%", player.getName()).replace("%player%", player.getName());
+                  Bukkit.getServer().dispatchCommand((CommandSender)Bukkit.getConsoleSender(), command);
+               }
+               sender.sendMessage(MessageUtil.VIPADD.replace("%player%", name).replace("%sure%", String.valueOf(time)).replace("%rutbe%", type));
+               player.sendMessage(MessageUtil.VIPGIVEN.replace("%sure%", String.valueOf(time)).replace("%rutbe%", type));
             }
-            sender.sendMessage(MessageUtil.VIPADD.replace("%player%", name).replace("%sure%", String.valueOf(time)).replace("%rutbe%", type));
-            player.sendMessage(MessageUtil.VIPGIVEN.replace("%sure%", String.valueOf(time)).replace("%rutbe%", type));
             return true;
          }
          else if (args[0].equalsIgnoreCase("ekle") || args[0].equalsIgnoreCase("add")) {
@@ -91,7 +97,7 @@ public class Commands implements CommandExecutor
                sender.sendMessage(MessageUtil.NOVIPPLAYER.replaceAll("%player%", name));
                return true;
             }
-            if (!putil.isVIP(player)) {
+            if (!putil.isVIP(player, name)) {
                sender.sendMessage(MessageUtil.NOTVIP);
                return true;
             }
@@ -133,7 +139,7 @@ public class Commands implements CommandExecutor
                return true;
             }
             for (final Player p : Bukkit.getOnlinePlayers()) {
-               if (putil.isVIP(p)) {
+               if (putil.isVIP(p, p.getName())) {
                   return true;
                }
                putil.setGroup(p, type2, sure);
@@ -156,7 +162,7 @@ public class Commands implements CommandExecutor
                sender.sendMessage(MessageUtil.NOPLAYER.replace("%player%", name));
                return true;
             }
-            if (!putil.isVIP(player) || !this.manager.getData().isConfigurationSection(player.getName())) {
+            if (!putil.isVIP(player, name) || !this.manager.getData().isConfigurationSection(player.getName())) {
                sender.sendMessage(MessageUtil.NOTVIP);
                return true;
             }

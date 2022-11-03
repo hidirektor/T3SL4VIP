@@ -51,6 +51,8 @@ Messages:
   vip-added-hour: '&b%vip_ekle_saat% &ehours added to your VIP period  !'
   vip-added-day: '&b%vip_ekle_gun% &edays added to your VIP period  !'
   not-bought: "&cYou haven't bought vip yet !"
+  cached-player: "&b%player% &e's VIP command added to cache list!"
+  no-cached: "&cThere is no cache command for &b%player%"
 Usages:
   add: '&7/tvip add <&5Player&7> <&5Time&7> <&5hour&7/&5day&7> &e»&aAdd time to VIP.'
   give: '&7/tvip give &7<&5Player&7> <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to player.'

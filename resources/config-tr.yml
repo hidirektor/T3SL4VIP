@@ -51,6 +51,8 @@ Messages:
   vip-added-hour: '&eVIP Sürene &b%vip_ekle_saat% &eSaat Eklenmiştir !'
   vip-added-day: '&eVIP Sürene &b%vip_ekle_gun% &eGün Eklenmiştir !'
   not-bought: '&cVIP Satın Almadınız !'
+  cached-player: '&b%player% &eAdlı Oyuncunun VIP Komutu Cache Listesine Eklendi !'
+  no-cached: '&b%player% &cAdlı Oyuncu İçin Önbelleğe Alınmış VIP İsteği Yok!'
 Usages:
   add: '&7/vip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
   give: '&7/vip ver &7<&5Oyuncu&7> <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aOyuncuya VIP Verir'

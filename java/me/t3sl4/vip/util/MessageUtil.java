@@ -35,6 +35,8 @@ public class MessageUtil {
    public static String USAGEDISTRIBUTE;
    public static String USAGEREMOVE;
    public static String NOTBOUGHT;
+   public static String CACHE;
+   public static String NOCACHED;
 
    public static void loadMessages() {
       PREFIX = colorize(manager.getConfig().getString("Prefix"));
@@ -63,7 +65,9 @@ public class MessageUtil {
       USAGEGIVE = PREFIX + colorize(manager.getConfig().getString("Usages.give"));
       USAGEDISTRIBUTE = PREFIX + colorize(manager.getConfig().getString("Usages.distribute"));
       USAGEREMOVE = PREFIX + colorize(manager.getConfig().getString("Usages.remove"));
-      NOTBOUGHT = colorize(manager.getConfig().getString("Messages.not-bought"));
+      NOTBOUGHT = PREFIX + colorize(manager.getConfig().getString("Messages.not-bought"));
+      CACHE = PREFIX + colorize(manager.getConfig().getString("Messages.cached-player"));
+      NOCACHED = PREFIX + colorize(manager.getConfig().getString("Messages.no-cached"));
    }
 
    public static String colorize(String str) {
