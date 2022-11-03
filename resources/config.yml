@@ -1,4 +1,12 @@
 Prefix: '&6&lT3SL4VIP &8» '
+Cmds:
+  Ana_Komut: 'tvip'
+  Check_Arg: 'check'
+  Give_Arg: 'give'
+  Remove_Arg: 'remove'
+  Distribute_Arg: 'distribute'
+  Add_Arg: 'add'
+  Reload_Arg: 'reload'
 GUI:
   title: '&bVIP Check'
   lore:
@@ -11,14 +19,13 @@ GUI:
     - '&e VIP Type : &a%rank%'
     - '&e Ending Date : &a%bitis%'
     - '&e Remaining Time :  &a%kalan%'
-Info:
-  - '&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m[&6 &lT3SL4VIP &8&l&m]&f&l&m-&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m-'
-  - '&7/tvip check &e»&aDisplays the remaining VIP time.'
-  - '&7/tvip give &7<&5Player&7> <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to player.'
-  - "&7/tvip remove <&5Player&7> &e»&aDeletes the player's VIP."
-  - '&7/tvip distribute <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to everyone on the server.'
-  - '&7/tvip add <&5Player&7> <&5Time&7> <&5hour&7/&5day&7> &e»&aAdd time to VIP.'
-  - '&7/tvip reload &e»&aReload the plugin.'
+Info-Prefix: '&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m[&6 &lT3SL4VIP &8&l&m]&f&l&m-&8&l&m-&f&l&m-&8&l&m-&f&l&m-&8&l&m-'
+Info-Check: '&7/tvip check &e»&aDisplays the remaining VIP time.'
+Info-Give: '&7/tvip give &7<&5Player&7> <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to player.'
+Info-Remove: "&7/tvip remove <&5Player&7> &e»&aDeletes the player's VIP."
+Info-Distribute: '&7/tvip distribute <&5VIP&7_&5Type&7> <&5Day_Amount&7> &e»&aGives VIP to everyone on the server.'
+Info-Add: '&7/tvip add <&5Player&7> <&5Time&7> <&5hour&7/&5day&7> &e»&aAdd time to VIP.'
+Info-Reload: '&7/tvip reload &e»&aReload the plugin.'
 Settings:
   DefaultRank: 'Oyuncu'
   Ranks:

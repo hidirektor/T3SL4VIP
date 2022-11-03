@@ -12,7 +12,13 @@ public class MessageUtil {
    public static String TITLE;
    public static List<String> ITEMLORE;
    public static List<String> ITEMLORE2;
-   public static List<String> INFO;
+   public static String INFOPREFIX;
+   public static String INFOCHECK;
+   public static String INFOGIVE;
+   public static String INFOREMOVE;
+   public static String INFODISTRIBUTE;
+   public static String INFOADD;
+   public static String INFORELOAD;
    public static String DEFAULTRANK;
    public static List<String> RANKS;
    public static String NOPERM;
@@ -37,13 +43,28 @@ public class MessageUtil {
    public static String NOTBOUGHT;
    public static String CACHE;
    public static String NOCACHED;
+   public static String CMDMAIN;
+   public static String CMDCHECK;
+   public static String CMDGIVE;
+   public static String CMDREMOVE;
+   public static String CMDDISTRIBUTE;
+   public static String CMDADD;
+   public static String CMDRELOAD;
 
    public static void loadMessages() {
       PREFIX = colorize(manager.getConfig().getString("Prefix"));
       TITLE = colorize(manager.getConfig().getString("GUI.title"));
       ITEMLORE = colorizeList(manager.getConfig().getStringList("GUI.lore"));
       ITEMLORE2 = colorizeList(manager.getConfig().getStringList("GUI.lore2"));
-      INFO = colorizeList(manager.getConfig().getStringList("Info"));
+
+      INFOPREFIX = colorize(manager.getConfig().getString("Info-Prefix"));
+      INFOCHECK = colorize(manager.getConfig().getString("Info-Check"));
+      INFOGIVE = colorize(manager.getConfig().getString("Info-Give"));
+      INFOREMOVE = colorize(manager.getConfig().getString("Info-Remove"));
+      INFODISTRIBUTE = colorize(manager.getConfig().getString("Info-Distribute"));
+      INFOADD = colorize(manager.getConfig().getString("Info-Add"));
+      INFORELOAD = colorize(manager.getConfig().getString("Info-Reload"));
+
       DEFAULTRANK = manager.getConfig().getString("Settings.DefaultRank");
       RANKS = manager.getConfig().getStringList("Settings.Ranks");
       NOPERM = PREFIX + colorize(manager.getConfig().getString("Messages.no-perm"));
@@ -68,6 +89,13 @@ public class MessageUtil {
       NOTBOUGHT = PREFIX + colorize(manager.getConfig().getString("Messages.not-bought"));
       CACHE = PREFIX + colorize(manager.getConfig().getString("Messages.cached-player"));
       NOCACHED = PREFIX + colorize(manager.getConfig().getString("Messages.no-cached"));
+      CMDMAIN = manager.getConfig().getString("Cmds.Ana_Komut");
+      CMDCHECK = manager.getConfig().getString("Cmds.Check_Arg");
+      CMDGIVE = manager.getConfig().getString("Cmds.Give_Arg");
+      CMDREMOVE = manager.getConfig().getString("Cmds.Remove_Arg");
+      CMDDISTRIBUTE = manager.getConfig().getString("Cmds.Distribute_Arg");
+      CMDADD = manager.getConfig().getString("Cmds.Add_Arg");
+      CMDRELOAD = manager.getConfig().getString("Cmds.Reload_Arg");
    }
 
    public static String colorize(String str) {

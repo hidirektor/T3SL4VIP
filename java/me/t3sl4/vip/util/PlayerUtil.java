@@ -6,12 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import me.t3sl4.vip.T3SL4VIP;
+import me.t3sl4.vip.api.API;
+import me.t3sl4.vip.api.Initializing;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class PlayerUtil {
    SettingsManager manager = SettingsManager.getInstance();
-   GMHook groupManager = T3SL4VIP.getGroupManager();
+   GMHook groupManager = Initializing.getGroupManager();
 
    public boolean isVIP(Player p, String name) {
       if(p != null) {

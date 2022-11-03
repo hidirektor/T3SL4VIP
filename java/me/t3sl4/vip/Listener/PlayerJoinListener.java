@@ -1,5 +1,7 @@
 package me.t3sl4.vip.Listener;
 
+import me.t3sl4.vip.api.API;
+import me.t3sl4.vip.api.Initializing;
 import me.t3sl4.vip.runnable.RemovingRunnable;
 import me.t3sl4.vip.T3SL4VIP;
 import me.t3sl4.vip.util.GMHook;
@@ -16,7 +18,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import java.util.ArrayList;
 
 public class PlayerJoinListener implements Listener {
-   GMHook groupManager = T3SL4VIP.getGroupManager();
+   GMHook groupManager = Initializing.getGroupManager();
    SettingsManager manager = SettingsManager.getInstance();
    PlayerUtil putil = new PlayerUtil();
 

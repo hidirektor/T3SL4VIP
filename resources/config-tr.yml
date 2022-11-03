@@ -1,4 +1,12 @@
 Prefix: '&6&lT3SL4VIP &8» '
+Cmds:
+  Ana_Komut: 'tvip'
+  Check_Arg: 'check'
+  Give_Arg: 'give'
+  Remove_Arg: 'remove'
+  Distribute_Arg: 'distribute'
+  Add_Arg: 'add'
+  Reload_Arg: 'reload'
 GUI:
   title: '&bVIP Sorgu'
   lore:
@@ -11,14 +19,13 @@ GUI:
     - '&e VIP Türü : &a%rank%'
     - '&e Bitiş Tarihi : &a%bitis%'
     - '&e Kalan Süre :  &a%kalan%'
-Info:
-  - '&5            =&b_&5=&b_&5=&b_&5=&b_&2&lSon&c&lOsmanli&5=&b_&5=&b_&5=&b_&5=&b_'
-  - '&7/tvip sorgu &e»&aKalan VIP Süresini Gösterir'
-  - '&7/tvip ver &7<&5Oyuncu&7> <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aOyuncuya VIP Verir'
-  - '&7/tvip sil <&5Oyuncu&7> &e»&aOyuncunun VIPini Siler'
-  - '&7/tvip dagit <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aSunucudaki Herkese VIP Verir'
-  - '&7/tvip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
-  - '&7/tvip reload &e»&aEklentiyi Yeniler'
+Info-Prefix: '&5            =&b_&5=&b_&5=&b_&5=&b_&2&lSon&c&lOsmanli&5=&b_&5=&b_&5=&b_&5=&b_'
+Info-Check: '&7/tvip sorgu &e»&aKalan VIP Süresini Gösterir'
+Info-Give: '&7/tvip ver &7<&5Oyuncu&7> <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aOyuncuya VIP Verir'
+Info-Remove: '&7/tvip sil <&5Oyuncu&7> &e»&aOyuncunun VIPini Siler'
+Info-Distribute: '&7/tvip dagit <&5VIP&7_&5Türü&7> <&5Gün&7> &e»&aSunucudaki Herkese VIP Verir'
+Info-Add: '&7/tvip ekle <&5Oyuncu&7> <&5Süre&7> <&5Saat&7/&5Gün&7> &e»&aVIPe Süre Ekler'
+Info-Reload: '&7/tvip reload &e»&aEklentiyi Yeniler'
 Settings:
   DefaultRank: 'Oyuncu'
   Ranks:

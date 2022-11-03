@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import me.t3sl4.vip.T3SL4VIP;
+import me.t3sl4.vip.api.API;
+import me.t3sl4.vip.api.Initializing;
 import me.t3sl4.vip.util.GMHook;
 import me.t3sl4.vip.util.PlayerUtil;
 import me.t3sl4.vip.util.SettingsManager;
@@ -16,7 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class RemovingRunnable extends BukkitRunnable {
    SettingsManager manager = SettingsManager.getInstance();
-   GMHook groupManager = T3SL4VIP.getGroupManager();
+   GMHook groupManager = Initializing.getGroupManager();
    public static ArrayList<String> derank = new ArrayList();
    PlayerUtil putil = new PlayerUtil();
 
