@@ -24,7 +24,7 @@ public class SilCommand implements CommandInterface {
         if (player == null) {
             sender.sendMessage(MessageUtil.NOPLAYER.replace("%player%", name));
         }
-        if (!API.putil.isVIP(player, name) || !this.manager.getData().isConfigurationSection(player.getName())) {
+        if (!API.putil.isVIP(player, name) || !this.manager.getFile("data").isConfigurationSection(player.getName())) {
             sender.sendMessage(MessageUtil.NOTVIP);
         }
         API.putil.deleteVIP(player);

@@ -47,7 +47,7 @@ public class VerCommand implements CommandInterface {
             }
         } else {
             API.putil.setGroup(player, type, time);
-            final ArrayList<String> commands = (ArrayList<String>)this.manager.getConfig().getStringList("Settings.Commands." + type);
+            final ArrayList<String> commands = (ArrayList<String>)this.manager.getFile("config").getStringList("Settings.Commands." + type);
             for (String command : commands) {
                 command = command.replace("/", "").replace("%p%", player.getName()).replace("%player%", player.getName());
                 Bukkit.getServer().dispatchCommand((CommandSender)Bukkit.getConsoleSender(), command);

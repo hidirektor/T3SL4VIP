@@ -17,19 +17,19 @@ public class PlayerUtil {
 
    public boolean isVIP(Player p, String name) {
       if(p != null) {
-         return this.manager.getData().isConfigurationSection(p.getName());
+         return this.manager.getFile("data").isConfigurationSection(p.getName());
       }
-      return this.manager.getData().isConfigurationSection(name) && this.manager.getCache().isConfigurationSection(name);
+      return this.manager.getFile("data").isConfigurationSection(name) && this.manager.getFile("cache").isConfigurationSection(name);
    }
 
    public boolean isCached(String name) {
-      return this.manager.getCache().isConfigurationSection(name);
+      return this.manager.getFile("cache").isConfigurationSection(name);
    }
 
    public Integer getRemainingTime(Player p) {
       DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
       Date date = new Date();
-      String endTime = this.manager.getData().getString(p.getName() + ".Bitis");
+      String endTime = this.manager.getFile("data").getString(p.getName() + ".Bitis");
       Calendar cal = Calendar.getInstance();
       cal.setTime(date);
       cal.add(2, 1);
@@ -62,11 +62,12 @@ public class PlayerUtil {
       cal.setTime(date);
       cal.add(5, time);
       String output_time = dateFormat.format(cal.getTime());
-      this.manager.getData().createSection(p.getName() + "");
-      this.manager.getData().set(p.getName() + ".MevcutRank", type);
-      this.manager.getData().set(p.getName() + ".Bitis", output_time);
-      this.manager.saveData();
-      String command = this.manager.getConfig().getString("Settings.GlobalCommands.give");
+      this.manager.getFile("data").createSection(p.getName() + "");
+      this.manager.getFile("data").set(p.getName() + ".OldRank", getOldRank(p));
+      this.manager.getFile("data").set(p.getName() + ".NextRank", type);
+      this.manager.getFile("data").set(p.getName() + ".Bitis", output_time);
+      this.manager.saveAllFiles();
+      String command = this.manager.getFile("config").getString("Settings.GlobalCommands.give");
       command = command.replace("%player%", p.getName()).replace("%VIP_Turu%", type);
       Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
    }
@@ -78,24 +79,24 @@ public class PlayerUtil {
       cal.setTime(date);
       cal.add(5, time);
       String output_time = dateFormat.format(cal.getTime());
-      this.manager.getCache().createSection(pName + "");
-      this.manager.getCache().set(pName + ".MevcutRank", type);
-      this.manager.getCache().set(pName + ".Bitis", output_time);
-      this.manager.getCache().set(pName + ".DayCount", time);
-      this.manager.saveCache();
+      this.manager.getFile("cache").createSection(pName + "");
+      this.manager.getFile("cache").set(pName + ".MevcutRank", type);
+      this.manager.getFile("cache").set(pName + ".Bitis", output_time);
+      this.manager.getFile("cache").set(pName + ".DayCount", time);
+      this.manager.saveAllFiles();
 
    }
 
    public void deleteVIP(Player player) {
-      String command = this.manager.getConfig().getString("Settings.GlobalCommands.take-back").replace("%player%", player.getName());
+      String command = this.manager.getFile("config").getString("Settings.GlobalCommands.take-back").replace("%player%", player.getName());
       Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
-      this.manager.getData().set(player.getName(), (Object)null);
-      this.manager.saveData();
+      this.manager.getFile("data").set(player.getName(), (Object)null);
+      this.manager.saveAllFiles();
    }
 
    public void addTime(Player player, int time, String type) {
       DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-      String bitis = this.manager.getData().getString(player.getName() + ".Bitis");
+      String bitis = this.manager.getFile("data").getString(player.getName() + ".Bitis");
       Calendar cal = Calendar.getInstance();
 
       Date dateA;
@@ -116,22 +117,50 @@ public class PlayerUtil {
          player.sendMessage(MessageUtil.ADDEDHOUR.replaceAll("%vip_ekle_saat%", String.valueOf(time)));
       }
 
-      this.manager.getData().set(player.getName() + ".Bitis", dateFormat.format(cal.getTime()));
-      this.manager.saveData();
+      this.manager.getFile("data").set(player.getName() + ".Bitis", dateFormat.format(cal.getTime()));
+      this.manager.saveAllFiles();
    }
 
    public String getRank(Player p) {
       if(GMHook.getGroupManager() == null) {
          if(isVIP(p, p.getName())) {
-            return this.manager.getData().getString(p.getName() + ".MevcutRank");
+            return this.manager.getFile("data").getString(p.getName() + ".MevcutRank");
          } else {
-            return this.manager.getConfig().getString("Settings.DefaultRank");
+            return this.manager.getFile("config").getString("Settings.DefaultRank");
          }
       }
       return this.groupManager.getGroup(p);
    }
 
+   public String getOldRank(Player p) {
+      //TODO
+      //OldRank system
+      if(MessageUtil.OLDRANKSYSTEM) {
+         if(MessageUtil.GROUPMANAGERPLUGIN) {
+            if(GMHook.getGroupManager() == null) {
+               if(isVIP(p, p.getName())) {
+                  return this.manager.getFile("data").getString(p.getName() + ".MevcutRank");
+               } else {
+                  return this.manager.getFile("data").getString("Settings.DefaultRank");
+               }
+            }
+         } else if(MessageUtil.LUCKPERMSPLUGIN) {
+
+         } else if(MessageUtil.ULTRAPERMISSIONSPLUGIN) {
+
+         } else if(MessageUtil.LIGHTPERMPLUGIN) {
+
+         } else if(MessageUtil.PERMISSIONSPLUSPLUGIN) {
+
+         } else if(MessageUtil.GROUPMANAGERPLUGIN) {
+            //TODO
+            //Çoklu true için hata mesajı
+         }
+      }
+      return MessageUtil.DEFAULTRANK;
+   }
+
    public String getBitis(Player p) {
-      return this.manager.getData().getString(p.getName() + ".Bitis");
+      return this.manager.getFile("data").getString(p.getName() + ".Bitis");
    }
 }

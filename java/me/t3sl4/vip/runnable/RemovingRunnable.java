@@ -30,15 +30,15 @@ public class RemovingRunnable extends BukkitRunnable {
 
       for(int var5 = 0; var5 < var4; ++var5) {
          OfflinePlayer op = var3[var5];
-         if (this.manager.getData().contains(op.getName())) {
-            String time_check = this.manager.getData().getString(op.getName() + ".Bitis");
+         if (this.manager.getFile("data").contains(op.getName())) {
+            String time_check = this.manager.getFile("data").getString(op.getName() + ".Bitis");
             String time = dateFormat.format(date);
             Player p = op.getPlayer();
             if (p != null && (time.equalsIgnoreCase(time_check) || this.putil.getRemainingTime(p) < 0)) {
                String name = op.getName();
                derank.add(name);
-               this.manager.getData().set(op.getName(), (Object)null);
-               this.manager.saveData();
+               this.manager.getFile("data").set(op.getName(), (Object)null);
+               this.manager.saveAllFiles();
             }
          }
       }

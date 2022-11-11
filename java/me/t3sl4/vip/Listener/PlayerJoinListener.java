@@ -30,25 +30,25 @@ public class PlayerJoinListener implements Listener {
          RemovingRunnable.derank.remove(p.getName());
       }
 
-      if(this.manager.getCache().isConfigurationSection(p.getName())) {
-         String type = this.manager.getCache().getString(p.getName() + ".MevcutRank");
-         String command = this.manager.getConfig().getString("Settings.GlobalCommands.give");
+      if(this.manager.getFile("cache").isConfigurationSection(p.getName())) {
+         String type = this.manager.getFile("cache").getString(p.getName() + ".MevcutRank");
+         String command = this.manager.getFile("config").getString("Settings.GlobalCommands.give");
          command = command.replace("%player%", p.getName()).replace("%VIP_Turu%", type);
          Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
-         final ArrayList<String> commands = (ArrayList<String>)this.manager.getConfig().getStringList("Settings.Commands." + type);
+         final ArrayList<String> commands = (ArrayList<String>)this.manager.getFile("config").getStringList("Settings.Commands." + type);
 
          for (String commandSub : commands) {
             commandSub = commandSub.replace("/", "").replace("%p%", p.getName()).replace("%player%", p.getName());
             Bukkit.getServer().dispatchCommand((CommandSender)Bukkit.getConsoleSender(), commandSub);
          }
-         this.manager.getData().createSection(p.getName() + "");
-         this.manager.getData().set(p.getName() + ".MevcutRank", this.manager.getCache().getString(p.getName() + ".MevcutRank"));
-         this.manager.getData().set(p.getName() + ".Bitis", this.manager.getCache().getString(p.getName() + ".Bitis"));
-         this.manager.saveData();
+         this.manager.getFile("data").createSection(p.getName() + "");
+         this.manager.getFile("data").set(p.getName() + ".MevcutRank", this.manager.getFile("cache").getString(p.getName() + ".MevcutRank"));
+         this.manager.getFile("data").set(p.getName() + ".Bitis", this.manager.getFile("cache").getString(p.getName() + ".Bitis"));
+         this.manager.saveAllFiles();
 
-         p.sendMessage(MessageUtil.VIPGIVEN.replace("%sure%", this.manager.getCache().getString(p.getName() + ".DayCount")).replace("%rutbe%", type));
-         this.manager.getCache().set(p.getName(), (Object)null);
-         this.manager.saveCache();
+         p.sendMessage(MessageUtil.VIPGIVEN.replace("%sure%", this.manager.getFile("cache").getString(p.getName() + ".DayCount")).replace("%rutbe%", type));
+         this.manager.getFile("cache").set(p.getName(), (Object)null);
+         this.manager.saveAllFiles();
       }
    }
 }

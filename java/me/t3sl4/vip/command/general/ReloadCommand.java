@@ -10,8 +10,7 @@ public class ReloadCommand implements CommandInterface {
     private SettingsManager manager = SettingsManager.getInstance();
 
     public void onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        manager.reloadConfig();
-        manager.reloadData();
+        manager.reloadAllFiles();
         MessageUtil.loadMessages();
         sender.sendMessage(MessageUtil.RELOAD);
     }

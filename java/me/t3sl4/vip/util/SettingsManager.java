@@ -3,6 +3,7 @@ package me.t3sl4.vip.util;
 import java.io.File;
 import java.io.IOException;
 
+import me.t3sl4.vip.T3SL4VIP;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -20,16 +21,8 @@ public class SettingsManager {
       return instance;
    }
 
-   private Plugin p;
-
-   private FileConfiguration config;
-   private File configFile;
-
-   private FileConfiguration data;
-   private File dFile;
-
-   private FileConfiguration cache;
-   private File cacheFile;
+   private FileConfiguration config, data, cache;
+   private File configFile, dFile, cacheFile;
 
    public void setup(Plugin p) {
       configFile = new File(p.getDataFolder(), "config.yml");
@@ -69,58 +62,29 @@ public class SettingsManager {
       cache = YamlConfiguration.loadConfiguration(cacheFile);
    }
 
-   public FileConfiguration getData() {
-      return data;
+   public FileConfiguration getFile(String fileName) {
+      if(fileName.equalsIgnoreCase("data")) {
+         return data;
+      } else if(fileName.equalsIgnoreCase("cache")) {
+         return cache;
+      } else {
+         return config;
+      }
    }
 
-   public void saveData() {
+   public void saveAllFiles() {
       try {
          data.save(dFile);
-      }
-      catch (IOException e) {
-         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data.yml!");
-      }
-   }
-
-   public void reloadData() {
-      data = YamlConfiguration.loadConfiguration(dFile);
-   }
-
-   public FileConfiguration getCache() {
-      return cache;
-   }
-
-   public void saveCache() {
-      try {
          cache.save(cacheFile);
-      }
-      catch (IOException e) {
-         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save cache.yml!");
-      }
-   }
-
-   public void reloadCache() {
-      cache = YamlConfiguration.loadConfiguration(cacheFile);
-   }
-
-   public FileConfiguration getConfig() {
-      return config;
-   }
-
-   public void saveConfig() {
-      try {
          config.save(configFile);
-      }
-      catch (IOException e) {
-         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save config.yml ve gui.yml!");
+      } catch(IOException e) {
+         Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save files !");
       }
    }
 
-   public void reloadConfig() {
+   public void reloadAllFiles() {
+      data = YamlConfiguration.loadConfiguration(dFile);
+      cache = YamlConfiguration.loadConfiguration(cacheFile);
       config = YamlConfiguration.loadConfiguration(configFile);
-   }
-
-   public PluginDescriptionFile getDesc() {
-      return p.getDescription();
    }
 }
